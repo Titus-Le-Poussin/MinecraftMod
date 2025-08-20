@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "dwarfmod:raw_rubis"
+  },
+  "result": "dwarfmod:rubis",
+  "experience": 0.8,
+  "cookingtime": 200    
+}

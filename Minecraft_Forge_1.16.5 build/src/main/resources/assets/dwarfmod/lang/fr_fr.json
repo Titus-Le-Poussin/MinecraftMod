@@ -1,5 +1,7 @@
 {
   "item.dwarfmod.rubis": "Rubis",
   "item.dwarfmod.raw_rubis": "Rubis brute",
-  "block.dwarfmod.rubis_ore": "Minerai de Rubis"
+  "block.dwarfmod.rubis_ore": "Minerai de Rubis",
+  "block.dwarfmod.rubis_block": "Bloc de Rubis",
+  "item.dwarfmod.rubis_sword": "Épée en Rubis"
 }

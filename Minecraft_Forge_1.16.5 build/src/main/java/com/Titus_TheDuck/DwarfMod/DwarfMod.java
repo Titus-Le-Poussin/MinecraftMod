@@ -18,6 +18,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.common.MinecraftForge; 
 import com.Titus_TheDuck.DwarfMod.world.OreGeneration; 
 import net.minecraft.item.ItemGroup; 
+import com.Titus_TheDuck.DwarfMod.blocks.RubisBlock;
+import com.Titus_TheDuck.DwarfMod.items.RubisSword;
+
 
 @Mod("dwarfmod")
 public class DwarfMod {
@@ -30,9 +33,14 @@ public class DwarfMod {
     public static final RegistryObject<Item> RUBIS = ITEMS.register("rubis", RubisItem::new);
     public static final RegistryObject<Item> RAW_RUBIS = ITEMS.register("raw_rubis", RawRubis::new);
     public static final RegistryObject<Block> RUBIS_ORE = BLOCKS.register("rubis_ore", RubisOre::new);
+    public static final RegistryObject<Block> RUBIS_BLOCK = BLOCKS.register("rubis_block", RubisBlock::new);
+    public static final RegistryObject<Item> RUBIS_SWORD = ITEMS.register("rubis_sword", RubisSword::new);
     // Item pour le bloc Rubis Ore
     public static final RegistryObject<Item> RUBIS_ORE_ITEM = ITEMS.register("rubis_ore", 
     () -> new BlockItem(RUBIS_ORE.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
+    // Item pour le bloc Rubis Block
+    public static final RegistryObject<Item> RUBIS_BLOCK_ITEM = ITEMS.register("rubis_block", 
+        () -> new BlockItem(RUBIS_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
 
 
     
