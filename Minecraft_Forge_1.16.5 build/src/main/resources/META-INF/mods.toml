@@ -55,3 +55,9 @@ mandatory=true
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
+[[mods]]
+modId="dwarfmod"
+version="1.0.0"
+displayName="Dwarf Mod"
+authors="Titus_TheDuck"
+description='''Un mod qui ajoute des rubis !'''
