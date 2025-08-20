@@ -17,9 +17,9 @@ public class OreGeneration {
         .configured(new OreFeatureConfig(
             OreFeatureConfig.FillerBlockType.NATURAL_STONE,
             DwarfMod.RUBIS_ORE.get().defaultBlockState(),
-            15)) // 15 blocs de rubis par veine
+            3)) // 3 blocs de rubis par veine
         .decorated(Placement.RANGE.configured(
-    new TopSolidRangeConfig(15, 0, 40))); // Plus de tentatives, zone Y 15-40
+    new TopSolidRangeConfig(10, 0, (40)))); // Plus de tentatives, zone Y 10-40
 
     @SubscribeEvent
     public static void onBiomeLoading(BiomeLoadingEvent event) {
