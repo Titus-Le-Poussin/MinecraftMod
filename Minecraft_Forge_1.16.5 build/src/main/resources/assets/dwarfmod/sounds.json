@@ -1,0 +1,11 @@
+{
+  "entity.chevre.ambient": {
+    "sounds": ["dwarfmod:sound/entity/chevre/goat_sound"]
+  },
+  "entity.chevre.hurt": {
+    "sounds": ["dwarfmod:sound/entity/chevre/goat_sound"]
+  },
+  "entity.chevre.death": {
+    "sounds": ["dwarfmod:sound/entity/chevre/die_goat_sound"]
+  }
+}

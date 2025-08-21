@@ -12,12 +12,18 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraft.item.Item;
 import com.Titus_TheDuck.DwarfMod.blocks.RubisOre;
+import com.Titus_TheDuck.DwarfMod.entities.ChevreEntity;
+
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.common.MinecraftForge; 
 import com.Titus_TheDuck.DwarfMod.world.OreGeneration; 
-import net.minecraft.item.ItemGroup; 
+import net.minecraft.item.ItemGroup;
+import net.minecraft.util.ResourceLocation;
+
 import com.Titus_TheDuck.DwarfMod.blocks.RubisBlock;
 import com.Titus_TheDuck.DwarfMod.items.RubisSword;
 
@@ -28,6 +34,22 @@ public class DwarfMod {
     // Registre pour nos items custom
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
+    
+    //chevre
+    public static final RegistryObject<SoundEvent> CHEVRE_AMBIENT = SOUNDS.register("entity.chevre.ambient", 
+    () -> new SoundEvent(new ResourceLocation(MOD_ID, "entity.chevre.ambient")));
+    // APRÈS les registres existants :
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MOD_ID);
+
+    // Sons de chèvre
+    public static final RegistryObject<SoundEvent> CHEVRE_AMBIENT = SOUNDS.register("entity.chevre.ambient", 
+    () -> new SoundEvent(new ResourceLocation(MOD_ID, "entity.chevre.ambient")));
+
+    // Entity chèvre
+    public static final RegistryObject<EntityType<ChevreEntity>> CHEVRE = ENTITIES.register("chevre", 
+    () -> EntityType.Builder.of(ChevreEntity::new, EntityClassification.CREATURE).build("chevre"));
+
 
     // Notre rubis !
     public static final RegistryObject<Item> RUBIS = ITEMS.register("rubis", RubisItem::new);
