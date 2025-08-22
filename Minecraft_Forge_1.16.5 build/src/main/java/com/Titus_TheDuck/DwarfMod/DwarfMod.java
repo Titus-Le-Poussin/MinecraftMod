@@ -13,7 +13,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraft.item.Item;
 import com.Titus_TheDuck.DwarfMod.blocks.RubisOre;
 import com.Titus_TheDuck.DwarfMod.entities.ChevreEntity;
-
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -23,9 +23,10 @@ import net.minecraftforge.common.MinecraftForge;
 import com.Titus_TheDuck.DwarfMod.world.OreGeneration; 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
-
+import net.minecraft.util.SoundEvent; 
 import com.Titus_TheDuck.DwarfMod.blocks.RubisBlock;
 import com.Titus_TheDuck.DwarfMod.items.RubisSword;
+import net.minecraftforge.common.ForgeSpawnEggItem; // Utilisation de ForgeSpawnEggItem pour le Supplier
 
 
 @Mod("dwarfmod")
@@ -35,16 +36,13 @@ public class DwarfMod {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
     
-    //chevre
-    public static final RegistryObject<SoundEvent> CHEVRE_AMBIENT = SOUNDS.register("entity.chevre.ambient", 
-    () -> new SoundEvent(new ResourceLocation(MOD_ID, "entity.chevre.ambient")));
+
     // APRÈS les registres existants :
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MOD_ID);
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MOD_ID);
-
-    // Sons de chèvre
+    //chevre
     public static final RegistryObject<SoundEvent> CHEVRE_AMBIENT = SOUNDS.register("entity.chevre.ambient", 
-    () -> new SoundEvent(new ResourceLocation(MOD_ID, "entity.chevre.ambient")));
+    () -> new SoundEvent(new ResourceLocation(MOD_ID, "entity.chevre.ambient")));    
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MOD_ID);
 
     // Entity chèvre
     public static final RegistryObject<EntityType<ChevreEntity>> CHEVRE = ENTITIES.register("chevre", 
@@ -65,6 +63,18 @@ public class DwarfMod {
         () -> new BlockItem(RUBIS_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
 
 
+        // Correction : Utilisation de ForgeSpawnEggItem avec Supplier pour éviter le crash de registre
+        // Le Supplier () -> CHEVRE.get() permet d'attendre que l'entité soit enregistrée avant d'y accéder
+        public static final RegistryObject<Item> CHEVRE_SPAWN_EGG = ITEMS.register("chevre_spawn_egg",
+            () -> new ForgeSpawnEggItem(
+                () -> CHEVRE.get(), // Supplier pour l'entité chèvre
+                0xFFFFFF,           // couleur principale (blanc)
+                0xAAAAAA,           // couleur secondaire (gris)
+                new Item.Properties().tab(ItemGroup.TAB_MISC)
+            )
+        );
+
+
     
     private static final Logger LOGGER = LogManager.getLogger();
     public DwarfMod() {
@@ -77,6 +87,8 @@ public class DwarfMod {
         // Enregistrement des items, blocs, etc. (à ajouter ici)
         ITEMS.register(modEventBus);
         BLOCKS.register(modEventBus);
+        SOUNDS.register(modEventBus);
+        ENTITIES.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(OreGeneration.class);
     }
 
