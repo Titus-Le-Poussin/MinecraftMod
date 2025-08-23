@@ -45,8 +45,10 @@ public class DwarfMod {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MOD_ID);
 
     // Entity chèvre
-    public static final RegistryObject<EntityType<ChevreEntity>> CHEVRE = ENTITIES.register("chevre", 
-    () -> EntityType.Builder.of(ChevreEntity::new, EntityClassification.CREATURE).build("chevre"));
+    public static final RegistryObject<EntityType<ChevreEntity>> CHEVRE = ENTITIES.register("chevre",
+        () -> EntityType.Builder.of(ChevreEntity::new, EntityClassification.CREATURE)
+            .sized(1.0F, 1.0F)
+            .build("chevre"));
 
 
     // Notre rubis !
@@ -100,3 +102,5 @@ public class DwarfMod {
 }
 
 //./gradlew runClient pour build
+//cd "/c/Users/Utilisateur/Documents/Informatique Etudes 2025/minecraft_mod/Minecraft_Forge_1.16.5 build"
+//./gradlew runClient

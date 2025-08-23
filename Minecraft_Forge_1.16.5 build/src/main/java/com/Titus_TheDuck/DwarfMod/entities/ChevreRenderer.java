@@ -2,17 +2,16 @@ package com.Titus_TheDuck.DwarfMod.entities;
 
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import com.Titus_TheDuck.DwarfMod.client.chevre; // ton modèle exporté
+import com.Titus_TheDuck.DwarfMod.entities.ChevreModel;
 
-public class ChevreRenderer extends MobRenderer<Entity, chevre> {
+public class ChevreRenderer extends MobRenderer<ChevreEntity, ChevreModel> {
     public ChevreRenderer(EntityRendererManager renderManager) {
-        super(renderManager, new chevre(), 0.7F); // 0.7F = taille de l’ombre
+        super(renderManager, new ChevreModel(), 0.7F);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Entity entity) {
-        return new ResourceLocation("dwarfmod:textures/entity/chevre/MountainGoat.png");
+    public ResourceLocation getTextureLocation(ChevreEntity entity) {
+        return new ResourceLocation("dwarfmod:textures/entity/chevre/mountain_goat.png");
     }
 }
